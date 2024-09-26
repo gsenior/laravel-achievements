@@ -36,7 +36,7 @@ class CreateAchievementsTables extends Migration
         Schema::create($this->achievement_progress, function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('achievement_id')->index();
-            $table->morphs('achiever');
+            $table->uuidMorphs('achiever');
             $table->unsignedInteger('points')->default(0);
             $table->timestamp('unlocked_at')->nullable()->default(null);
             $table->timestamps();

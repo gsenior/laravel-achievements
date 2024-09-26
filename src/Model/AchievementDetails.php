@@ -100,7 +100,9 @@ class AchievementDetails extends Model
         parent::boot();
 
         static::creating(function (self $model) {
-            $model->id = Uuid::uuid4()->toString();
+            if (! $model->getKey()) {
+                $model->id = Uuid::uuid4()->toString();
+            }
         });
 
     }
